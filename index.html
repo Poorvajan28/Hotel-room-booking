@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Room Booking System - Developed by POORVAJAN G S</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Hotel Room Booking System - A comprehensive solution for hotel reservations. Developed by POORVAJAN G S, Final Year CSE Student at KSRIET, Leader of Team CODE CRAFTS">
+    <meta name="keywords" content="hotel booking, room reservation, hotel management, POORVAJAN G S, KSRIET, CODE CRAFTS">
+    <meta name="author" content="POORVAJAN G S - Final Year CSE Student at KSRIET, Leader of Team CODE CRAFTS">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div id="loading" class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <h2><i class="fas fa-hotel"></i> Grand Hotel</h2>
+                    <small class="developer-credit">by POORVAJAN G S</small>
+                </div>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#rooms" class="nav-link">Rooms</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <div class="auth-buttons" id="authButtons">
+                        <button class="btn btn-outline" id="loginBtn">Login</button>
+                        <button class="btn btn-primary" id="registerBtn">Register</button>
+                    </div>
+                    <div class="user-menu hidden" id="userMenu">
+                        <button class="btn btn-profile" id="profileBtn">
+                            <i class="fas fa-user-circle"></i>
+                            <span id="userName">User</span>
+                        </button>
+                        <div class="dropdown" id="userDropdown">
+                            <a href="#" id="dashboardLink"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                            <a href="#" id="bookingsLink"><i class="fas fa-calendar-check"></i> My Bookings</a>
+                            <a href="#" id="profileLink"><i class="fas fa-user-edit"></i> Profile</a>
+                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="container">
+                    <h1 class="hero-title">
+                        Welcome to Grand Hotel
+                        <small class="developer-badge">Developed by POORVAJAN G S - Final Year CSE, KSRIET</small>
+                    </h1>
+                    <p class="hero-subtitle">Experience luxury and comfort with our premium room booking system</p>
+                    
+                    <!-- Booking Form -->
+                    <div class="booking-form-container">
+                        <form class="booking-form" id="searchForm">
+                            <div class="form-group">
+                                <label for="checkIn">Check-in Date</label>
+                                <input type="date" id="checkIn" name="checkIn" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="checkOut">Check-out Date</label>
+                                <input type="date" id="checkOut" name="checkOut" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="guests">Guests</label>
+                                <select id="guests" name="guests">
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5+ Guests</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="roomType">Room Type</label>
+                                <select id="roomType" name="roomType">
+                                    <option value="">Any Type</option>
+                                    <option value="single">Single</option>
+                                    <option value="double">Double</option>
+                                    <option value="suite">Suite</option>
+                                    <option value="deluxe">Deluxe</option>
+                                    <option value="presidential">Presidential</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-search">
+                                <i class="fas fa-search"></i> Search Rooms
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Rooms Section -->
+        <section class="rooms" id="rooms">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Rooms</h2>
+                    <p class="section-subtitle">Choose from our selection of premium rooms</p>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <select id="filterRoomType">
+                            <option value="">All Room Types</option>
+                            <option value="single">Single</option>
+                            <option value="double">Double</option>
+                            <option value="suite">Suite</option>
+                            <option value="deluxe">Deluxe</option>
+                            <option value="presidential">Presidential</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <select id="sortBy">
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="name-asc">Name: A to Z</option>
+                            <option value="rating-desc">Rating: High to Low</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <input type="range" id="priceRange" min="1000" max="50000" value="50000">
+                        <label for="priceRange">Max Price: ₹<span id="priceValue">50,000</span></label>
+                    </div>
+                </div>
+
+                <!-- Rooms Grid -->
+                <div class="rooms-grid" id="roomsGrid">
+                    <!-- Room cards will be populated by JavaScript -->
+                    <div class="room-card-skeleton">
+                        <div class="skeleton-image"></div>
+                        <div class="skeleton-content">
+                            <div class="skeleton-title"></div>
+                            <div class="skeleton-text"></div>
+                            <div class="skeleton-text"></div>
+                            <div class="skeleton-button"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination" id="pagination">
+                    <!-- Pagination buttons will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>About Our Hotel Booking System</h2>
+                        <p>This comprehensive hotel room booking system provides a seamless experience for guests to discover, book, and manage their hotel reservations. Built with modern web technologies, it offers a user-friendly interface and robust functionality.</p>
+                        
+                        <div class="features">
+                            <div class="feature">
+                                <i class="fas fa-search"></i>
+                                <h3>Smart Search</h3>
+                                <p>Advanced filtering and search capabilities to find the perfect room</p>
+                            </div>
+                            
+                            <div class="feature">
+                                <i class="fas fa-calendar-alt"></i>
+                                <h3>Real-time Availability</h3>
+                                <p>Live room availability checking with instant booking confirmation</p>
+                            </div>
+                            
+                            <div class="feature">
+                                <i class="fas fa-shield-alt"></i>
+                                <h3>Secure Payments</h3>
+                                <p>Multiple payment options with secure transaction processing</p>
+                            </div>
+                        </div>
+
+                        <div class="developer-info">
+                            <div class="developer-card">
+                                <div class="developer-avatar">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <div class="developer-details">
+                                    <h3>POORVAJAN G S</h3>
+                                    <p>Final Year CSE Student at KSRIET</p>
+                                    <p>Leader of Team CODE CRAFTS</p>
+                                    <div class="developer-links">
+                                        <a href="#" class="dev-link"><i class="fab fa-github"></i></a>
+                                        <a href="#" class="dev-link"><i class="fab fa-linkedin"></i></a>
+                                        <a href="#" class="dev-link"><i class="fas fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-image">
+                        <img src="assets/hotel-lobby.jpg" alt="Hotel Lobby" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Contact Us</h2>
+                    <p class="section-subtitle">Get in touch with us for any queries or assistance</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Address</h3>
+                            <p>123 Main Street<br>City, State, ZIP</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <h3>Phone</h3>
+                            <p>+91 9876543210</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <p>info@grandhotel.com</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <h3>Check-in/Check-out</h3>
+                            <p>Check-in: 3:00 PM<br>Check-out: 11:00 AM</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="contactName" placeholder="Your Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" id="contactEmail" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" id="contactSubject" placeholder="Subject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <textarea id="contactMessage" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-hotel"></i> Grand Hotel</h3>
+                    <p>Your premium destination for comfort and luxury.</p>
+                    <p class="developer-credit">
+                        <strong>Developed by:</strong><br>
+                        <span>POORVAJAN G S</span><br>
+                        <small>Final Year CSE Student at KSRIET</small><br>
+                        <small>Leader of Team CODE CRAFTS</small>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#rooms">Rooms</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Room Service</a></li>
+                        <li><a href="#">Concierge</a></li>
+                        <li><a href="#">Spa & Wellness</a></li>
+                        <li><a href="#">Business Center</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hotel Room Booking System. All rights reserved.</p>
+                <p>Developed with ❤️ by <strong>POORVAJAN G S</strong> - Final Year CSE Student at KSRIET, Leader of Team CODE CRAFTS</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login</h2>
+                <button class="modal-close" id="loginModalClose">&times;</button>
+            </div>
+            <form class="modal-form" id="loginForm">
+                <div class="form-group">
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberMe">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Login</button>
+                <p class="form-footer">
+                    Don't have an account? <a href="#" id="showRegister">Register here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Register</h2>
+                <button class="modal-close" id="registerModalClose">&times;</button>
+            </div>
+            <form class="modal-form" id="registerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="registerFirstName" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="registerLastName" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="registerEmail" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="registerPhone" placeholder="Phone Number" pattern="[0-9]{10}" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="registerPassword" placeholder="Password" minlength="6" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#">Terms & Conditions</a>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Register</button>
+                <p class="form-footer">
+                    Already have an account? <a href="#" id="showLogin">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal modal-large" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Book Room</h2>
+                <button class="modal-close" id="bookingModalClose">&times;</button>
+            </div>
+            <div class="booking-steps">
+                <div class="step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-title">Room Details</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-title">Guest Information</span>
+                </div>
+                <div class="step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-title">Payment</span>
+                </div>
+            </div>
+            <div class="booking-form-content" id="bookingFormContent">
+                <!-- Booking form content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Modal -->
+    <div class="modal modal-large" id="dashboardModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Dashboard</h2>
+                <button class="modal-close" id="dashboardModalClose">&times;</button>
+            </div>
+            <div class="dashboard-content" id="dashboardContent">
+                <!-- Dashboard content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/rooms.js"></script>
+    <script src="js/booking.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

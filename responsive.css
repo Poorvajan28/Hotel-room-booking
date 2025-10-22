@@ -1,0 +1,701 @@
+/**
+ * Hotel Room Booking System - Responsive Styles
+ * Developed by POORVAJAN G S
+ * Final Year CSE Student at KSRIET
+ * Leader of Team CODE CRAFTS
+ */
+
+/* ===== BREAKPOINTS ===== */
+/* 
+Large Desktop: 1200px+
+Desktop: 992px - 1199px
+Tablet: 768px - 991px
+Large Phone: 576px - 767px
+Small Phone: < 576px
+*/
+
+/* ===== LARGE DESKTOP (1200px+) ===== */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .rooms-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ===== DESKTOP (992px - 1199px) ===== */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .rooms-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===== TABLET (768px - 991px) ===== */
+@media (max-width: 991px) {
+    .container {
+        padding: 0 var(--spacing-lg);
+    }
+    
+    /* Header */
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        padding: var(--spacing-xl);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--transition-normal);
+        z-index: var(--z-dropdown);
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-link {
+        padding: var(--spacing-md);
+        border-bottom: 1px solid var(--light-gray);
+        width: 100%;
+        text-align: center;
+    }
+    
+    .auth-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-lg);
+    }
+    
+    .user-menu .dropdown {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        margin-top: var(--spacing-md);
+    }
+    
+    /* Hero Section */
+    .hero {
+        min-height: 80vh;
+        padding-top: 80px;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .booking-form {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .booking-form .btn-search {
+        grid-column: 1;
+        margin-top: var(--spacing-md);
+    }
+    
+    /* Sections */
+    .section-title {
+        font-size: var(--font-size-2xl);
+    }
+    
+    /* Rooms */
+    .filter-bar {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .filter-group {
+        width: 100%;
+    }
+    
+    .filter-group select,
+    .filter-group input[type="range"] {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .rooms-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    /* About Section */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+        text-align: center;
+    }
+    
+    .about-text {
+        order: 2;
+    }
+    
+    .about-image {
+        order: 1;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+    }
+    
+    .developer-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    /* Contact Section */
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+    
+    .contact-info {
+        order: 2;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .contact-form {
+        order: 1;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Modals */
+    .modal-content {
+        width: 95%;
+        max-height: 85vh;
+    }
+    
+    .modal-large .modal-content {
+        max-width: 90%;
+    }
+    
+    /* Booking Steps */
+    .booking-steps {
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+    }
+    
+    .step {
+        min-width: auto;
+    }
+    
+    /* Dashboard */
+    .dashboard-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Tables */
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .table {
+        min-width: 600px;
+    }
+}
+
+/* ===== LARGE PHONE (576px - 767px) ===== */
+@media (max-width: 767px) {
+    /* Typography adjustments */
+    .hero-title {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .developer-badge {
+        font-size: var(--font-size-xs);
+    }
+    
+    .section-title {
+        font-size: var(--font-size-xl);
+    }
+    
+    /* Spacing adjustments */
+    .hero {
+        min-height: 70vh;
+    }
+    
+    .rooms,
+    .about,
+    .contact {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    /* Rooms */
+    .rooms-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .room-card {
+        margin: 0 auto;
+        max-width: 400px;
+    }
+    
+    /* Forms */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .booking-form-container {
+        padding: var(--spacing-lg);
+    }
+    
+    /* Contact */
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Developer card */
+    .developer-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .developer-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: var(--font-size-xl);
+    }
+    
+    /* Modal adjustments */
+    .modal-header {
+        padding: var(--spacing-lg);
+    }
+    
+    .modal-form {
+        padding: var(--spacing-lg);
+    }
+    
+    .booking-steps {
+        padding: var(--spacing-lg);
+    }
+    
+    /* Dashboard */
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard-content {
+        padding: var(--spacing-lg);
+    }
+    
+    /* Toast notifications */
+    .toast-container {
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        left: var(--spacing-md);
+    }
+    
+    .toast {
+        min-width: auto;
+    }
+}
+
+/* ===== SMALL PHONE (< 576px) ===== */
+@media (max-width: 575px) {
+    /* Container adjustments */
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    /* Typography */
+    .hero-title {
+        font-size: var(--font-size-xl);
+        line-height: 1.3;
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+    }
+    
+    .section-title {
+        font-size: var(--font-size-lg);
+    }
+    
+    /* Header */
+    .nav-brand h2 {
+        font-size: var(--font-size-lg);
+    }
+    
+    .navbar {
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .nav-links {
+        padding: var(--spacing-lg);
+    }
+    
+    /* Hero section */
+    .hero {
+        min-height: 60vh;
+        padding: var(--spacing-xl) 0;
+    }
+    
+    /* Booking form */
+    .booking-form-container {
+        padding: var(--spacing-md);
+        margin: var(--spacing-md);
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+    
+    .btn-search {
+        padding: var(--spacing-md);
+    }
+    
+    /* Room cards */
+    .room-content {
+        padding: var(--spacing-lg);
+    }
+    
+    .room-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+    
+    .room-price {
+        text-align: left;
+        width: 100%;
+    }
+    
+    .room-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .room-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Features */
+    .feature {
+        align-items: center;
+        text-align: left;
+    }
+    
+    .feature i {
+        margin-top: 0;
+    }
+    
+    /* Contact items */
+    .contact-item {
+        align-items: center;
+    }
+    
+    .contact-item i {
+        margin-top: 0;
+    }
+    
+    /* Modals */
+    .modal-content {
+        width: 98%;
+        max-height: 90vh;
+        margin: var(--spacing-sm);
+    }
+    
+    .modal-header {
+        padding: var(--spacing-md);
+    }
+    
+    .modal-form {
+        padding: var(--spacing-md);
+    }
+    
+    /* Booking steps */
+    .booking-steps {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing-md);
+    }
+    
+    .step {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    /* Footer */
+    .footer {
+        padding: var(--spacing-2xl) 0 var(--spacing-lg) 0;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .developer-credit {
+        text-align: left;
+    }
+    
+    /* Tables */
+    .table th,
+    .table td {
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-sm);
+    }
+    
+    /* Status badges */
+    .status-badge {
+        font-size: 10px;
+        padding: 2px var(--spacing-xs);
+    }
+    
+    /* Dashboard adjustments */
+    .dashboard-tabs {
+        flex-direction: column;
+    }
+    
+    .dashboard-tab {
+        text-align: left;
+        border-bottom: none;
+        border-left: 2px solid transparent;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .dashboard-tab.active {
+        border-left-color: var(--primary-color);
+        border-bottom-color: transparent;
+        background-color: var(--light-gray);
+    }
+}
+
+/* ===== LANDSCAPE PHONE ===== */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .hero-subtitle {
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .booking-form-container {
+        padding: var(--spacing-lg);
+    }
+    
+    .modal-content {
+        max-height: 95vh;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    * {
+        background: transparent !important;
+        color: black !important;
+        text-shadow: none !important;
+        filter: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    .header,
+    .nav-toggle,
+    .modal,
+    .toast-container,
+    .btn,
+    button {
+        display: none !important;
+    }
+    
+    .hero {
+        background: none !important;
+        color: black !important;
+        min-height: auto;
+        padding: 20pt 0;
+    }
+    
+    .hero-overlay {
+        display: none;
+    }
+    
+    .section-title {
+        color: black !important;
+    }
+    
+    .room-card,
+    .contact-form,
+    .developer-card {
+        border: 1pt solid #ccc;
+        break-inside: avoid;
+        margin-bottom: 10pt;
+    }
+    
+    .rooms-grid {
+        grid-template-columns: 1fr;
+        gap: 10pt;
+    }
+    
+    .footer {
+        background: none !important;
+        color: black !important;
+        border-top: 1pt solid #ccc;
+        margin-top: 20pt;
+    }
+}
+
+/* ===== HIGH CONTRAST MODE ===== */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #0066cc;
+        --secondary-color: #ff9900;
+        --success-color: #008800;
+        --error-color: #cc0000;
+        --warning-color: #cc8800;
+        --info-color: #0088cc;
+        --gray: #666666;
+        --dark-gray: #333333;
+        --light-gray: #f0f0f0;
+    }
+    
+    .btn {
+        border-width: 2px;
+    }
+    
+    .room-card,
+    .modal-content,
+    .contact-form {
+        border: 2px solid var(--gray);
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        background-color: var(--primary-color);
+        color: var(--white);
+    }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .spinner {
+        animation: none;
+        border: 4px solid var(--primary-color);
+        border-radius: var(--radius-full);
+    }
+    
+    .loading-spinner {
+        transition: none;
+    }
+    
+    .room-card:hover {
+        transform: none;
+    }
+    
+    .room-card:hover .room-image img {
+        transform: none;
+    }
+}
+
+/* ===== FOCUS STYLES FOR ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: no-preference) {
+    *:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+    
+    .btn:focus {
+        outline-offset: 4px;
+    }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #1a1a1a;
+        --bg-secondary: #2d2d2d;
+        --white: #ffffff;
+        --black: #ffffff;
+        --light-gray: #404040;
+        --gray: #b0b0b0;
+        --dark-gray: #e0e0e0;
+    }
+    
+    body {
+        background-color: var(--bg-primary);
+        color: var(--black);
+    }
+    
+    .header {
+        background: rgba(26, 26, 26, 0.95);
+    }
+    
+    .room-card,
+    .contact-form,
+    .modal-content,
+    .booking-form-container {
+        background: var(--bg-secondary);
+        color: var(--black);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        background: var(--bg-primary);
+        color: var(--black);
+        border-color: var(--gray);
+    }
+    
+    .skeleton-image,
+    .skeleton-title,
+    .skeleton-text,
+    .skeleton-button {
+        background: linear-gradient(90deg, #404040 25%, #505050 50%, #404040 75%);
+    }
+}

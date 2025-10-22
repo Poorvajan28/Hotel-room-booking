@@ -1,0 +1,34 @@
+{
+  "name": "hotel-booking-backend",
+  "version": "1.0.0",
+  "description": "Backend for Hotel Room Booking System - Developed by POORVAJAN G S, Final Year CSE Student at KSRIET, Team CODE CRAFTS Leader",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hotel",
+    "booking",
+    "nodejs",
+    "express",
+    "rest-api"
+  ],
+  "author": "POORVAJAN G S - Final Year CSE Student at KSRIET, Leader of Team CODE CRAFTS",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express-validator": "^7.0.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
